@@ -1,6 +1,5 @@
 import collections
 import string
-import locale
 
 import filtrage
 
@@ -34,14 +33,20 @@ def splitting(text_cipher, ncol):
 # Exemple d'utilisation :
 # Ton texte ici :
 texte_de_test = """Le code est secret ! Vive Cesar !
+
 J'ai fait des exercices après mon cours de crypto à la fac, mais dans ces exercices, bien sûr, je connaissais l'algorithme derrière.
+
 Je ne demande pas "comment casser un message chiffré en RSA 4096 ?", mais "quels sont les vrais processus utilisés pour forcer un code quand tu n'y connais rien ?". Peut-être un truc genre chiffre de César, utilisé par des gens pas pros chez eux, ou peut-être un jeu/quiz dans un magazine.
+
 Qu'est-ce que font les pros ? Ils essaient juste toutes les techniques possibles ? Par quoi tu commencerais ? Quels logiciels sont utilisés professionnellement ? Y a-t-il des alternatives pour essayer à la maison ?
-En d'autres termes, qu'est-ce que tu ferais concrètement si tu voulais te lancer un défi genre "essaie de casser ce code !!!" ? """
+
+En d'autres termes, qu'est-ce que tu ferais concrètement si tu voulais te lancer un défi genre "essaie de casser ce code !!!" ? 
+
+"""
 
 cle="PYTHON"
 
-texte_de_test = filtrage.filtrer_uniquement_lettres(texte_de_test)
+texte_de_test = filtrage.filtrer(texte_de_test)
 
 texte_cipher = vigenere.vigenere_cipher(texte_de_test, cle)
 
@@ -59,8 +64,8 @@ match(choix):
         
     case 2 :
         print()
-        print("Longueur supposée de la clef de chiffrement ?")
-        ncol = int(input())
+        print()
+        ncol = int(input("Longueur supposée de la clef de chiffrement ? "))
         colonnes = splitting(texte_cipher, ncol)
         print("*"*100)
         print("*"*100)

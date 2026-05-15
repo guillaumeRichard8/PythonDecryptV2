@@ -1,8 +1,8 @@
 from collections import Counter
 import filtrage
 
-def distance_trigrammes(texte, nb=3, seuil=13, trigramme = ""):
-    # Nettoyage simple et découpage en mots
+def distance_trigrammes(texte, nb=3, seuil=3, trigramme = ""):
+    # Nettoyage simple et découpage en mots de 3 lettres (nb=3)
     texte = filtrage.filtrer_uniquement_lettres(texte)
     textetab = [k for k in texte.lower()]
     #print(f"textetab : {textetab}")
@@ -24,10 +24,10 @@ def distance_trigrammes(texte, nb=3, seuil=13, trigramme = ""):
     # Affichage des trigrammes fréquents
     print("\n" * 2)
     for tri, count in resultats_tries:
-        if count > (seuil*0.8):
+        if count > (seuil-1):
             print()
             print(f"'{tri}' apparaît {count} fois")
-            if count > seuil:
+            if count > seuil-1:
                 find_pos_tri(texte, tri)
     return 0
 
