@@ -1,5 +1,5 @@
-import collections
-import string
+# import collections
+# import string
 
 import filtrage
 
@@ -9,17 +9,18 @@ import distance_trigrammes
 
 import analyse_frequence
 
+
 def splitting(text_cipher, ncol):
     # On nettoie le texte pour ne garder que les lettres (optionnel selon ton besoin)
     text_cipher = filtrage.filtrer_uniquement_lettres(text_cipher)
     
-    MAXCHAR = 500 # MAX_TOTAL_CHAR = ncol * MAXCHAR
+    # MAXCHAR = 500  # MAX_TOTAL_CHAR = ncol * MAXCHAR
     length = len(text_cipher)
     print(f"Length = {length}")
     
     # Initialisation d'un tableau de 'ncol' listes vides
     tab = [[] for _ in range(ncol)]
-    #tab = [[] for col in range(ncol)]
+    # tab = [[] for col in range(ncol)]
     
     # Distribution des caractères dans les colonnes
     for k in range(length):
@@ -44,7 +45,7 @@ En d'autres termes, qu'est-ce que tu ferais concrètement si tu voulais te lance
 
 """
 
-cle="PYTHON"
+cle = "PYTHON"
 
 texte_de_test = filtrage.filtrer(texte_de_test)
 
@@ -57,22 +58,22 @@ print()
 
 choix = int(input("Choix ? "))
 
-match(choix):
+match choix:
     
-    case 1 :
-        distance_trigrammes.distance_trigrammes(texte_cipher)
+    case 1:
+        distance_trigrammes.distance_trigrammes(texte_cipher, 3, 8)
         
-    case 2 :
+    case 2:
         print()
         print()
-        ncol = int(input("Longueur supposée de la clef de chiffrement ? "))
-        colonnes = splitting(texte_cipher, ncol)
+        nbcol = int(input("Longueur supposée de la clef de chiffrement ? "))
+        colonnes = splitting(texte_cipher, nbcol)
         print("*"*100)
         print("*"*100)
-        for i in range(ncol):
-            print(f"\n Colonne n° = {i+1}")
-            analyse_frequence.analyser_frequence(colonnes[i])
-            print("*" *100)
+        for ic in range(nbcol):
+            print(f"\n Colonne n° = {ic+1}")
+            analyse_frequence.analyser_frequence(colonnes[ic])
+            print("*" * 100)
             
     case _:
         print("Option invalide, veuillez choisir 1 ou 2.")
